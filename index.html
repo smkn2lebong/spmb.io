@@ -1,21 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
 <meta charset="utf-8"/>
-<m ta name="viewport" content="width=device-width, initia<mel-scale=1.0" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Formulir PPDB SMK</title>
-<meta name="description" content="Kontak resmi SMK Negeri 2 Lebong. Hubungi kami untuk informasi pendaftaran, jurusan, dan kegiatan sekolah." />
-  <meta name="keywords" content="Kontak SMKN 2 Lebong, Hubungi SMK Negeri 2 Lebong, WA SMK 2 Lebong" />
-  <meta name="robots" content="index, follow" />
-<!-- Open Graph Meta -->
-  <meta property="og:title" content="Kontak SMKN 2 Lebong" />
-  <meta property="og:description" content="Hubungi admin SMKN 2 Lebong langsung melalui WhatsApp atau kirim pesan lewat form website." />
-  <meta property="og:image" content="https://smkn2lebong.github.io/assets/images/promo.png" />
-  <meta property="og:url" content="https://smkn2lebong.github.io/kontak.html" />
-  <meta property="og:type" content="website" />
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -77,47 +66,11 @@
         padding: 12px 15px;
         font-size: 1rem;
       }
+    }
   </style>
 </head>
 <body>
 <!-- Syarat dan Ketentuan -->
-
-<div class="card" id="info-ppdb">
-  <h2>Informasi PPDB SMK Negeri 2 Lebong</h2>
-  <p>SMK Negeri 2 Lebong membuka Pendaftaran Peserta Didik Baru Tahun Pelajaran <strong>2025/2026</strong> untuk 5 kompetensi keahlian unggulan:</p>
-  <ul>
-    <li>Tata Busana</li>
-    <li>Teknik Instalasi Tenaga Listrik</li>
-    <li>Teknik dan Bisnis Sepeda Motor</li>
-    <li>Teknik Kendaraan Ringan Otomotif</li>
-    <li>Desain Komunikasi Visual</li>
-  </ul>
-  <p><strong>Syarat Pendaftaran:</strong></p>
-  <ul>
-    <li>Bukti cetak daftar SPMB online</li>
-    <li>Fotokopi Kartu Keluarga (KK)</li>
-    <li>Fotokopi Akta Kelahiran</li>
-    <li>Fotokopi Ijazah atau Surat Keterangan Lulus (SKL)</li>
-    <li>Pas Foto 3x4 berwarna sebanyak 3 lembar</li>
-    <li>Fotokopi KIP/KKS (jika ada)</li>
-  </ul>
-  <p><strong>Ketentuan Map Pendaftaran:</strong></p>
-  <ul>
-    <li>Tata Busana: Map plastik warna kuning</li>
-    <li>Teknik Instalasi Tenaga Listrik: Map plastik warna biru</li>
-    <li>Teknik dan Bisnis Sepeda Motor: Map plastik warna merah</li>
-    <li>Teknik Kendaraan Ringan Otomotif: Map plastik warna merah</li>
-    <li>Desain Komunikasi Visual: Map plastik warna kuning</li>
-  </ul>
-  <p><strong>Jadwal Pendaftaran:</strong></p>
-  <ul>
-    <li>Formulir Online: 9 Juni – 8 Juli 2025</li>
-    <li>Penyerahan Berkas: 23 Juni – 8 Juli 2025</li>
-    <li>Pengumuman Hasil Seleksi: 9 Juli 2025</li>
-    <li>Daftar Ulang: 10 – 11 Juli 2025</li>
-  </ul>
-</div>
-
 <div class="card" id="syarat">
 <h2>Syarat dan Ketentuan Pendaftaran</h2>
 <p><strong>Sebelum mengisi formulir, siapkan dokumen pendukung seperti:</strong></p>
@@ -217,18 +170,6 @@
 </div>
 <!-- Notifikasi Kirim -->
 </form>
-
-<div class="card" id="loading" style="display:none; text-align:center;">
-  <p>⏳ Mengirim data, mohon tunggu...</p>
-  <div style="border: 6px solid #f3f3f3; border-top: 6px solid #d71149; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
-</div>
-<style>
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
-
 <div class="card" id="notifikasi" style="display:none; text-align:center;">
 <h2>Data Anda sudah terkirim!</h2>
 <p>Terima kasih telah mendaftar. Silakan download bukti pendaftaran Anda.</p>
@@ -487,18 +428,6 @@
   }
 </script>
 
-
-<div class="card" id="loading" style="display:none; text-align:center;">
-  <p>⏳ Mengirim data, mohon tunggu...</p>
-  <div style="border: 6px solid #f3f3f3; border-top: 6px solid #d71149; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
-</div>
-<style>
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
-
 <div class="card" id="notifikasi" style="display:none; text-align:center;"></div>
 
 <script>
@@ -512,7 +441,6 @@ document.getElementById("ppdbForm").addEventListener("submit", async function(ev
   }
 
   try {
-    document.getElementById("loading").style.display = "block";
     const response = await fetch(form.action, {
       method: "POST",
       body: encoded
@@ -522,7 +450,6 @@ document.getElementById("ppdbForm").addEventListener("submit", async function(ev
 
     if (result.result === "success") {
       form.style.display = "none";
-      document.getElementById("loading").style.display = "none";
       const notifikasi = document.getElementById("notifikasi");
       notifikasi.innerHTML = `
         <h2>✅ Pendaftaran Berhasil</h2>
