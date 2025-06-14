@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Formulir PPDB SMK</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f0ff;
+      margin: 0;
+      padding: 10px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      max-width: 600px;
+      margin: 20px auto;
+      box-sizing: border-box;
+    }
+    .btn {
+      background-color: #d71149;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 250px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn:hover {
+      background-color: #b60f3a;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    h2 {
+      color: #d71149;
+      text-align: center;
+    }
+    h4 {
+      margin-bottom: 5px;
+      color: #d71149;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    /* Responsive for small screens */
+    @media (max-width: 400px) {
+      .btn {
+        padding: 12px 15px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Syarat dan Ketentuan -->
+
+<div class="card" id="info-ppdb">
+  <h2>Informasi PPDB SMK Negeri 2 Lebong</h2>
+  <p>SMK Negeri 2 Lebong membuka Pendaftaran Peserta Didik Baru Tahun Pelajaran <strong>2025/2026</strong> untuk 5 kompetensi keahlian unggulan:</p>
+  <ul>
+    <li>Tata Busana</li>
+    <li>Teknik Instalasi Tenaga Listrik</li>
+    <li>Teknik dan Bisnis Sepeda Motor</li>
+    <li>Teknik Kendaraan Ringan Otomotif</li>
+    <li>Desain Komunikasi Visual</li>
+  </ul>
+  <p><strong>Syarat Pendaftaran:</strong></p>
+  <ul>
+    <li>Bukti cetak daftar SPMB online</li>
+    <li>Fotokopi Kartu Keluarga (KK)</li>
+    <li>Fotokopi Akta Kelahiran</li>
+    <li>Fotokopi Ijazah atau Surat Keterangan Lulus (SKL)</li>
+    <li>Pas Foto 3x4 berwarna sebanyak 3 lembar</li>
+    <li>Fotokopi KIP/KKS (jika ada)</li>
+  </ul>
+  <p><strong>Ketentuan Map Pendaftaran:</strong></p>
+  <ul>
+    <li>Tata Busana: Map plastik warna kuning</li>
+    <li>Teknik Instalasi Tenaga Listrik: Map plastik warna biru</li>
+    <li>Teknik dan Bisnis Sepeda Motor: Map plastik warna merah</li>
+    <li>Teknik Kendaraan Ringan Otomotif: Map plastik warna merah</li>
+    <li>Desain Komunikasi Visual: Map plastik warna kuning</li>
+  </ul>
+  <p><strong>Jadwal Pendaftaran:</strong></p>
+  <ul>
+    <li>Formulir Online: 9 Juni – 8 Juli 2025</li>
+    <li>Penyerahan Berkas: 23 Juni – 8 Juli 2025</li>
+    <li>Pengumuman Hasil Seleksi: 9 Juli 2025</li>
+    <li>Daftar Ulang: 10 – 11 Juli 2025</li>
+  </ul>
+</div>
+
+<div class="card" id="syarat">
+<h2>Syarat dan Ketentuan Pendaftaran</h2>
+<p><strong>Sebelum mengisi formulir, siapkan dokumen pendukung seperti:</strong></p>
+<ul>
+<li>Kartu Keluarga (KK)</li>
+<li>Ijazah atau Surat Keterangan Lulus (SKL)</li>
+</ul>
+<p>Pastikan Anda mengisi data dengan benar dan sesuai dokumen tersebut agar proses pendaftaran berjalan lancar.</p>
+<p>Setelah klik <strong>“Saya Setuju”</strong>, Anda akan melanjutkan ke Formulir Data Siswa. Pastikan setiap langkah diselesaikan dengan benar sebelum melanjutkan ke tahap berikutnya.</p>
+<div style="text-align: center;">
+<button class="btn" onclick="lanjutForm()">Saya Setuju</button>
+</div>
+</div>
+<!-- Form Siswa -->
+<form action="https://script.google.com/macros/s/AKfycbyTz8SU9yjkKHPn_CecKfc_fPd6i322OITOKJVGB4nlmlC8T7okkXzS72Yy6SIjuaus/exec" id="ppdbForm" method="POST">
+<div class="card" id="form-siswa" style="display:none;">
+<h2>Data Siswa</h2>
+<input id="nik" maxlength="16" name="nik_siswa" pattern="\d{16}" placeholder="NIK (16 digit)" required="" title="NIK harus 16 digit angka" type="text"/>
+<input id="kk" maxlength="16" name="no_kk" pattern="\d{16}" placeholder="Nomor KK (16 digit)" required="" title="Nomor KK harus 16 digit angka" type="text"/>
+<input id="nama" name="nama_siswa" placeholder="Nama Lengkap" required="" type="text"/>
+<input id="nisn" maxlength="10" name="nisn" pattern="\d{10}" placeholder="NISN (10 digit)" required="" title="NISN harus 10 digit angka" type="text"/>
+<select id="jk" name="jenis_kelamin" required="">
+<option value="">Jenis Kelamin</option>
+<option value="Laki-laki">Laki-laki</option>
+<option value="Perempuan">Perempuan</option>
+</select>
+<input id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir" required="" type="text"/>
+<input id="tanggal_lahir" name="tanggal_lahir" required="" type="date"/>
+<select id="agama" name="agama" required="">
+<option value="">Agama</option>
+<option value="Islam">Islam</option>
+<option value="Kristen">Kristen</option>
+<option value="Katolik">Katolik</option>
+<option value="Hindu">Hindu</option>
+<option value="Budha">Budha</option>
+<option value="Konghucu">Konghucu</option>
+<option value="Lainnya">Lainnya</option>
+</select>
+<textarea id="alamat" name="alamat_lengkap" placeholder="Alamat Lengkap" required=""></textarea>
+<input id="anak_ke" min="1" name="anak_ke" placeholder="Anak ke-" required="" type="number"/><input id="jumlah_saudara" min="0" name="jumlah_saudara" placeholder="Jumlah Saudara Kandung" required="" type="number"/>
+<select id="status_keluarga" name="status_keluarga" required="">
+<option value="">Status Dalam Keluarga</option>
+<option value="Anak Kandung">Anak Kandung</option>
+<option value="Anak Tiri">Anak Tiri</option>
+<option value="Anak Angkat">Anak Angkat</option>
+</select>
+<input id="sekolah_asal" name="sekolah_asal" placeholder="Nama Sekolah Asal" required="" type="text"/>
+<textarea id="alamat_sekolah" name="alamat_sekolah_asal" placeholder="Alamat Sekolah Asal" required=""></textarea>
+<input id="tahun_lulus" max="2025" min="2020" name="tahun_lulus" placeholder="Tahun Lulus" required="" type="number"/>
+<button class="btn" onclick="validasiSiswa()">Lanjut ke Data Periodik</button>
+</div>
+<!-- Form Periodik -->
+<div class="card" id="form-periodik" style="display:none;">
+<h2>Data Periodik</h2>
+<input id="tinggi" name="tinggi" placeholder="Tinggi Badan (cm)" required="" type="number"/>
+<input id="berat" name="berat" placeholder="Berat Badan (kg)" required="" type="number"/>
+<input id="jarak" name="jarak" placeholder="Jarak ke Sekolah (km)" required="" step="0.1" type="number"/>
+<input id="waktu" name="waktu" placeholder="Waktu Tempuh (menit)" required="" type="number"/>
+<select id="jurusan" name="pilihan_jurusan" required="">
+<option value="">Pilih Jurusan</option>
+<option value="Tata Busana">Tata Busana</option>
+<option value="Teknik Instalasi Tenaga Listrik">Teknik Instalasi Tenaga Listrik</option>
+<option value="Teknik Dan Bisnis Sepeda Motor">Teknik Dan Bisnis Sepeda Motor</option>
+<option value="Teknik Kendaraan Ringan Otomotif">Teknik Kendaraan Ringan Otomotif</option>
+<option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
+</select>
+<button class="btn" onclick="kembaliKeSiswa()">Kembali</button>
+<button class="btn" onclick="validasiPeriodik()">Lanjut ke Data Orang Tua</button>
+</div>
+<!-- Form Orang Tua -->
+<div class="card" id="form-ortu" style="display:none;">
+<h2>Data Orang Tua</h2>
+<h4>Ayah Kandung</h4>
+<input id="ayah_nama" name="nama_ayah" placeholder="Nama Ayah" required="" type="text"/>
+<input id="ayah_nik" maxlength="16" name="nik_ayah" pattern="\d{16}" placeholder="NIK Ayah (16 digit)" required="" title="NIK Ayah harus 16 digit angka" type="text"/>
+<input id="ayah_lahir" name="tahun_lahir_ayah" placeholder="Tahun Lahir Ayah" required="" type="number"/>
+<input id="ayah_pendidikan" name="pendidikan_ayah" placeholder="Pendidikan Ayah" required="" type="text"/>
+<input id="ayah_pekerjaan" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah" required="" type="text"/>
+<input id="ayah_penghasilan" name="penghasilan_ayah" placeholder="Penghasilan Ayah" required="" type="text"/>
+<h4>Ibu Kandung</h4>
+<input id="ibu_nama" name="nama_ibu" placeholder="Nama Ibu" required="" type="text"/>
+<input id="ibu_nik" maxlength="16" name="nik_ibu" pattern="\d{16}" placeholder="NIK Ibu (16 digit)" required="" title="NIK Ibu harus 16 digit angka" type="text"/>
+<input id="ibu_lahir" name="tahun_lahir_ibu" placeholder="Tahun Lahir Ibu" required="" type="number"/>
+<input id="ibu_pendidikan" name="pendidikan_ibu" placeholder="Pendidikan Ibu" required="" type="text"/>
+<input id="ibu_pekerjaan" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu" required="" type="text"/>
+<input id="ibu_penghasilan" name="penghasilan_ibu" placeholder="Penghasilan Ibu" required="" type="text"/>
+<button class="btn" onclick="kembaliKePeriodik()">Kembali</button>
+<button class="btn" onclick="validasiOrtu()">Lanjut ke Kontak</button>
+</div>
+<!-- Form Kontak -->
+<div class="card" id="form-kontak" style="display:none;">
+<h2>Kontak</h2>
+<input id="hp_siswa" maxlength="15" name="hp_siswa" pattern="\d{10,15}" placeholder="Nomor HP/WA Peserta Didik" required="" title="Masukkan nomor HP/WA yang valid" type="text"/>
+<input id="hp_ortu" maxlength="15" name="hp_orangtua" pattern="\d{10,15}" placeholder="Nomor HP/WA Orang Tua" required="" title="Masukkan nomor HP/WA yang valid" type="text"/>
+<button class="btn" onclick="kembaliKeOrtu()">Kembali</button>
+<button class="btn" type="submit">Kirim Data</button>
+</div>
+<!-- Notifikasi Kirim -->
+</form>
+
+<div class="card" id="loading" style="display:none; text-align:center;">
+  <p>⏳ Mengirim data, mohon tunggu...</p>
+  <div style="border: 6px solid #f3f3f3; border-top: 6px solid #d71149; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+</div>
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<div class="card" id="notifikasi" style="display:none; text-align:center;">
+<h2>Data Anda sudah terkirim!</h2>
+<p>Terima kasih telah mendaftar. Silakan download bukti pendaftaran Anda.</p>
+<button class="btn" onclick="window.location.reload()">Isi Formulir Baru</button>
+</div>
+<script>
+  function lanjutForm() {
+    document.getElementById('syarat').style.display = 'none';
+    document.getElementById('form-siswa').style.display = 'block';
+  }
+
+  function validasiSiswa() {
+    const nik = document.getElementById('nik');
+    const kk = document.getElementById('kk');
+    const nama = document.getElementById('nama');
+    const nisn = document.getElementById('nisn');
+    const jk = document.getElementById('jk');
+    const tempat_lahir = document.getElementById('tempat_lahir');
+    const tanggal_lahir = document.getElementById('tanggal_lahir');
+    const agama = document.getElementById('agama');
+    const alamat = document.getElementById('alamat');
+    const anak_ke = document.getElementById('anak_ke');
+    const status_keluarga = document.getElementById('status_keluarga');
+    const sekolah_asal = document.getElementById('sekolah_asal');
+    const alamat_sekolah = document.getElementById('alamat_sekolah');
+    const tahun_lulus = document.getElementById('tahun_lulus');
+
+    if (!nik.checkValidity()) {
+      alert(nik.title);
+      nik.focus();
+      return;
+    }
+    if (!kk.checkValidity()) {
+      alert(kk.title);
+      kk.focus();
+      return;
+    }
+    if (nama.value.trim() === '') {
+      alert('Nama Lengkap harus diisi');
+      nama.focus();
+      return;
+    }
+    if (!nisn.checkValidity()) {
+      alert(nisn.title);
+      nisn.focus();
+      return;
+    }
+    if (jk.value === '') {
+      alert('Jenis Kelamin harus dipilih');
+      jk.focus();
+      return;
+    }
+    if (tempat_lahir.value.trim() === '') {
+      alert('Tempat Lahir harus diisi');
+      tempat_lahir.focus();
+      return;
+    }
+    if (tanggal_lahir.value === '') {
+      alert('Tanggal Lahir harus diisi');
+      tanggal_lahir.focus();
+      return;
+    }
+    if (agama.value === '') {
+      alert('Agama harus dipilih');
+      agama.focus();
+      return;
+    }
+    if (alamat.value.trim() === '') {
+      alert('Alamat harus diisi');
+      alamat.focus();
+      return;
+    }
+    if (anak_ke.value === '' || anak_ke.value < 1) {
+      alert('Anak ke- harus diisi dengan angka 1 atau lebih');
+      anak_ke.focus();
+      return;
+    }
+    if (status_keluarga.value === '') {
+      alert('Status Dalam Keluarga harus dipilih');
+      status_keluarga.focus();
+      return;
+    }
+    if (sekolah_asal.value.trim() === '') {
+      alert('Nama Sekolah Asal harus diisi');
+      sekolah_asal.focus();
+      return;
+    }
+    if (alamat_sekolah.value.trim() === '') {
+      alert('Alamat Sekolah Asal harus diisi');
+      alamat_sekolah.focus();
+      return;
+    }
+    if (tahun_lulus.value === '' || tahun_lulus.value < 2020 || tahun_lulus.value > 2025) {
+      alert('Tahun Lulus harus diisi antara 2020 hingga 2025');
+      tahun_lulus.focus();
+      return;
+    }
+
+    document.getElementById('form-siswa').style.display = 'none';
+    document.getElementById('form-periodik').style.display = 'block';
+  }
+
+  function kembaliKeSiswa() {
+    document.getElementById('form-periodik').style.display = 'none';
+    document.getElementById('form-siswa').style.display = 'block';
+  }
+
+  function validasiPeriodik() {
+    const tinggi = document.getElementById('tinggi');
+    const berat = document.getElementById('berat');
+    const jarak = document.getElementById('jarak');
+    const waktu = document.getElementById('waktu');
+    const jurusan = document.getElementById('jurusan');
+
+    if (tinggi.value === '' || tinggi.value <= 0) {
+      alert('Tinggi Badan harus diisi dengan angka positif');
+      tinggi.focus();
+      return;
+    }
+    if (berat.value === '' || berat.value <= 0) {
+      alert('Berat Badan harus diisi dengan angka positif');
+      berat.focus();
+      return;
+    }
+    if (jarak.value === '' || jarak.value <= 0) {
+      alert('Jarak ke Sekolah harus diisi dengan angka positif');
+      jarak.focus();
+      return;
+    }
+    if (waktu.value === '' || waktu.value <= 0) {
+      alert('Waktu Tempuh harus diisi dengan angka positif');
+      waktu.focus();
+      return;
+    }
+    if (jurusan.value === '') {
+      alert('Jurusan harus dipilih');
+      jurusan.focus();
+      return;
+    }
+
+    document.getElementById('form-periodik').style.display = 'none';
+    document.getElementById('form-ortu').style.display = 'block';
+  }
+
+  function kembaliKePeriodik() {
+    document.getElementById('form-ortu').style.display = 'none';
+    document.getElementById('form-periodik').style.display = 'block';
+  }
+
+  function validasiOrtu() {
+    const ayah_nama = document.getElementById('ayah_nama');
+    const ayah_nik = document.getElementById('ayah_nik');
+    const ayah_lahir = document.getElementById('ayah_lahir');
+    const ayah_pendidikan = document.getElementById('ayah_pendidikan');
+    const ayah_pekerjaan = document.getElementById('ayah_pekerjaan');
+    const ayah_penghasilan = document.getElementById('ayah_penghasilan');
+
+    const ibu_nama = document.getElementById('ibu_nama');
+    const ibu_nik = document.getElementById('ibu_nik');
+    const ibu_lahir = document.getElementById('ibu_lahir');
+    const ibu_pendidikan = document.getElementById('ibu_pendidikan');
+    const ibu_pekerjaan = document.getElementById('ibu_pekerjaan');
+    const ibu_penghasilan = document.getElementById('ibu_penghasilan');
+
+    if (ayah_nama.value.trim() === '') {
+      alert('Nama Ayah harus diisi');
+      ayah_nama.focus();
+      return;
+    }
+    if (!ayah_nik.checkValidity()) {
+      alert(ayah_nik.title);
+      ayah_nik.focus();
+      return;
+    }
+    if (ayah_lahir.value === '') {
+      alert('Tahun Lahir Ayah harus diisi');
+      ayah_lahir.focus();
+      return;
+    }
+    if (ayah_pendidikan.value.trim() === '') {
+      alert('Pendidikan Ayah harus diisi');
+      ayah_pendidikan.focus();
+      return;
+    }
+    if (ayah_pekerjaan.value.trim() === '') {
+      alert('Pekerjaan Ayah harus diisi');
+      ayah_pekerjaan.focus();
+      return;
+    }
+    if (ayah_penghasilan.value.trim() === '') {
+      alert('Penghasilan Ayah harus diisi');
+      ayah_penghasilan.focus();
+      return;
+    }
+
+    if (ibu_nama.value.trim() === '') {
+      alert('Nama Ibu harus diisi');
+      ibu_nama.focus();
+      return;
+    }
+    if (!ibu_nik.checkValidity()) {
+      alert(ibu_nik.title);
+      ibu_nik.focus();
+      return;
+    }
+    if (ibu_lahir.value === '') {
+      alert('Tahun Lahir Ibu harus diisi');
+      ibu_lahir.focus();
+      return;
+    }
+    if (ibu_pendidikan.value.trim() === '') {
+      alert('Pendidikan Ibu harus diisi');
+      ibu_pendidikan.focus();
+      return;
+    }
+    if (ibu_pekerjaan.value.trim() === '') {
+      alert('Pekerjaan Ibu harus diisi');
+      ibu_pekerjaan.focus();
+      return;
+    }
+    if (ibu_penghasilan.value.trim() === '') {
+      alert('Penghasilan Ibu harus diisi');
+      ibu_penghasilan.focus();
+      return;
+    }
+
+    document.getElementById('form-ortu').style.display = 'none';
+    document.getElementById('form-kontak').style.display = 'block';
+  }
+
+  function kembaliKeOrtu() {
+    document.getElementById('form-kontak').style.display = 'none';
+    document.getElementById('form-ortu').style.display = 'block';
+  }
+
+  function kirimData() {
+    const hp_siswa = document.getElementById('hp_siswa');
+    const hp_ortu = document.getElementById('hp_ortu');
+
+    if (!hp_siswa.checkValidity()) {
+      alert(hp_siswa.title);
+      hp_siswa.focus();
+      return;
+    }
+    if (!hp_ortu.checkValidity()) {
+      alert(hp_ortu.title);
+      hp_ortu.focus();
+      return;
+    }
+
+    // Simulasi pengiriman data, di sini bisa ditambahkan integrasi backend atau Google Apps Script
+    alert('Data berhasil dikirim!');
+
+    document.getElementById('form-kontak').style.display = 'none';
+    document.getElementById('notifikasi').style.display = 'block';
+  }
+</script>
+
+
+<div class="card" id="loading" style="display:none; text-align:center;">
+  <p>⏳ Mengirim data, mohon tunggu...</p>
+  <div style="border: 6px solid #f3f3f3; border-top: 6px solid #d71149; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+</div>
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+<div class="card" id="notifikasi" style="display:none; text-align:center;"></div>
+
+<script>
+document.getElementById("ppdbForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  const encoded = new URLSearchParams();
+  for (const [key, value] of formData.entries()) {
+    encoded.append(key, value);
+  }
+
+  try {
+    document.getElementById("loading").style.display = "block";
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: encoded
+    });
+
+    const result = await response.json();
+
+    if (result.result === "success") {
+      form.style.display = "none";
+      document.getElementById("loading").style.display = "none";
+      const notifikasi = document.getElementById("notifikasi");
+      notifikasi.innerHTML = `
+        <h2>✅ Pendaftaran Berhasil</h2>
+        <p>Terima kasih telah mendaftar. Silakan download bukti pendaftaran Anda:</p>
+        <p><a href="${result.pdfUrl}" target="_blank" style="font-weight: bold; color: #d71149;">🖨️ Download Bukti Pendaftaran (PDF)</a></p>
+        <p><em>Cetak berkas ini sebagai syarat pendaftaran dan bawa ke panitia SPMB.</em></p>
+        <button class="btn" onclick="window.location.reload()">Isi Formulir Baru</button>
+      `;
+      notifikasi.style.display = "block";
+    } else {
+      alert("Gagal menyimpan data: " + result.message);
+    }
+  } catch (err) {
+    alert("Terjadi kesalahan: " + err.message);
+  }
+});
+</script>
+</body>
+
+</html>
