@@ -3,58 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SPMB - Sedang Perbaikan | SMK Negeri 2 Lebong</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Formulir Belum Tersedia</title>
   <style>
     body {
-      margin: 0;
+      background: radial-gradient(circle, #0a0a0a, #050505);
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 30px 20px;
       text-align: center;
-      padding: 20px;
     }
-    .box {
-      background: #fff;
-      padding: 40px 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
-    }
-    h1 {
-      color: #0a3d62;
-      margin-bottom: 16px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    a {
-      display: inline-block;
-      margin-top: 24px;
-      text-decoration: none;
-      color: white;
-      background-color: #0a3d62;
+
+    .server {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      background: #00ffe1;
       padding: 10px 20px;
       border-radius: 8px;
+      box-shadow: 0 0 20px #00ffe1;
+      display: inline-block;
+    }
+
+    .packet {
+      position: absolute;
+      bottom: 50px;
+      width: 30px;
+      height: 30px;
+      background-color: #ff1493;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #ff1493;
+      animation: fly 3.5s infinite;
+    }
+
+    @keyframes fly {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-50vh) scale(1.2); }
+      100% { transform: translateY(-85vh) scale(0.8); opacity: 0; }
+    }
+
+    .countdown {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .countdown strong {
+      color: #00ffe1;
+    }
+
+    #time {
+      font-size: 1.3rem;
+      color: #00ffe1;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+
+    .link-box {
+      margin-top: 25px;
+    }
+
+    .link-box a {
+      text-decoration: none;
+      color: #00ffe1;
+      background-color: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 6px;
       transition: background-color 0.3s ease;
     }
-    a:hover {
-      background-color: #1e6091;
+
+    .link-box a:hover {
+      background-color: rgba(255,255,255,0.3);
     }
+
+    .grafik {
+      max-width: 600px;
+      margin: 40px auto 0;
+      text-align: left;
+    }
+
+    .grafik h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffe1;
+    }
+
+    .bar {
+      margin-bottom: 18px;
+    }
+
+    .label {
+      margin-bottom: 5px;
+    }
+
+    .graph {
+      height: 24px;
+      background: #333;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(to right, #ff1493, #00ffe1);
+      border-radius: 12px;
+      width: 0;
+      transition: width 1.5s ease;
+    }
+
+    .count {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>🔧 Halaman Sedang Perbaikan</h1>
-    <p>Terima kasih telah mengunjungi laman <strong>SPMB SMK Negeri 2 Lebong</strong>.</p>
-    <p>Saat ini halaman ini masih dalam proses perbaikan untuk mengunduh hasil Pdf dikarenakan Pdf yang di unduh tidak berektensi. Kami sedang bekerja keras untuk menyempurnakannya agar dapat berjalan dengan sebaik mungkin.</p>
-    <p>jika ada pertnyaan kirim pesan di web resmi SMK Ngeri 2 Lebong di laman kontak.</p>
-    <a href="https://smkn2lebong.github.io/index.html">Kembali ke Beranda</a>
+  <div class="server">🖥️ Sedang mengirim data ke server...</div>
+
+  <div class="packet" style="left: 25%; animation-delay: 0s;"></div>
+  <div class="packet" style="left: 50%; animation-delay: 0.5s;"></div>
+  <div class="packet" style="left: 75%; animation-delay: 1s;"></div>
+
+  <div class="countdown">
+    <p><strong>Mohon maaf</strong>, saat ini formulir pendaftaran belum tersedia karena sedang dalam proses sinkronisasi ke server SMK Negeri 2 Lebong.</p>
+    <p>Formulir akan aktif dalam:</p>
+    <div id="time">Memuat waktu...</div>
   </div>
+
+  <div class="link-box">
+    <a href="https://smkn2lebong.sch.id/informasi.html">Lihat Informasi Lainnya</a>
+  </div>
+
+  <div class="grafik">
+    <h3>Statistik Pendaftar Sementara</h3>
+
+    <div class="bar">
+      <div class="label">Tata Busana</div>
+      <div class="graph"><div class="fill" style="width: 50%;"></div></div>
+      <div class="count">100 orang</div>
+    </div>
+
+    <div class="bar">
+      <div class="label">Teknik Instalasi Listrik</div>
+      <div class="graph"><div class="fill" style="width: 100%;"></div></div>
+      <div class="count">200 orang</div>
+    </div>
+
+    <div class="bar">
+      <div class="label">Teknik dan Bisnis Sepeda Motor</div>
+      <div class="graph"><div class="fill" style="width: 20%;"></div></div>
+      <div class="count">40 orang</div>
+    </div>
+
+    <div class="bar">
+      <div class="label">Teknik Kendaraan Ringan Otomotif</div>
+      <div class="graph"><div class="fill" style="width: 25%;"></div></div>
+      <div class="count">50 orang</div>
+    </div>
+
+    <div class="bar">
+      <div class="label">Desain Komunikasi Visual</div>
+      <div class="graph"><div class="fill" style="width: 15%;"></div></div>
+      <div class="count">30 orang</div>
+    </div>
+  </div>
+
+  <script>
+    // Countdown timer
+    const targetDate = new Date("2025-06-19T06:00:00+07:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        window.location.href = "https://smkn2lebong.sch.id/informasi.html";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("time").innerHTML = 
+        `${days}h ${hours}j ${minutes}m ${seconds}d`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Bar chart animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fill').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => bar.style.width = width, 300);
+      });
+    });
+  </script>
 </body>
 </html>
