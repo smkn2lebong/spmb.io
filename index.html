@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Formulir PPDB SMK</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulir PPDB SMK</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #e6f0ff;
@@ -35,7 +35,11 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .btn:hover {
+    .btn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+    .btn:hover:enabled {
       background-color: #b60f3a;
     }
     input, select, textarea {
@@ -69,7 +73,6 @@
 </head>
 <body>
 
-<!-- Syarat dan Ketentuan -->
 <div class="card" id="syarat">
   <h2>Syarat dan Ketentuan Pendaftaran</h2>
   <p><strong>Sebelum mengisi formulir, siapkan dokumen pendukung seperti:</strong></p>
@@ -84,90 +87,87 @@
   </div>
 </div>
 
-<!-- Formulir PPDB -->
-<form action="https://script.google.com/macros/s/AKfycbyg0ViGMFYazHB7JpTF4rY1nEh_ISbsVcoKP1WnGLOWSqixd_lDXFkWYxvYT2QqnFcV/exec" id="ppdbForm" method="POST">
+<form action="https://script.google.com/macros/s/AKfycbyg0ViGMFYazHB7JpTF4rY1nEh_ISbsVcoKP1WnGLOWSqixd_lDXFkWYxvYT2QqnFcV/exec" id="ppdbForm" method="POST" style="display:none;">
+  <div class="card" id="form-siswa">
+    <h2>Data Siswa</h2>
+    <input id="nik" name="nik_siswa" maxlength="16" pattern="\d{16}" placeholder="NIK (16 digit)" required title="NIK harus 16 digit angka" type="text"/>
+    <input id="kk" name="no_kk" maxlength="16" pattern="\d{16}" placeholder="Nomor KK (16 digit)" required title="Nomor KK harus 16 digit angka" type="text"/>
+    <input id="nama" name="nama_siswa" placeholder="Nama Lengkap" required type="text"/>
+    <input id="nisn" name="nisn" maxlength="10" pattern="\d{10}" placeholder="NISN (10 digit)" required title="NISN harus 10 digit angka" type="text"/>
+    <select id="jk" name="jenis_kelamin" required>
+      <option value="">Jenis Kelamin</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
+    </select>
+    <input id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir" required type="text"/>
+    <input id="tanggal_lahir" name="tanggal_lahir" required type="date"/>
+    <select id="agama" name="agama" required>
+      <option value="">Agama</option>
+      <option value="Islam">Islam</option>
+      <option value="Kristen">Kristen</option>
+      <option value="Katolik">Katolik</option>
+      <option value="Hindu">Hindu</option>
+      <option value="Budha">Budha</option>
+      <option value="Konghucu">Konghucu</option>
+      <option value="Lainnya">Lainnya</option>
+    </select>
+    <textarea id="alamat" name="alamat_lengkap" placeholder="Alamat Lengkap" required></textarea>
+    <input id="anak_ke" name="anak_ke" min="1" placeholder="Anak ke-" required type="number"/>
+    <input id="jumlah_saudara" name="jumlah_saudara" min="0" placeholder="Jumlah Saudara Kandung" required type="number"/>
+    <select id="status_keluarga" name="status_keluarga" required>
+      <option value="">Status Dalam Keluarga</option>
+      <option value="Anak Kandung">Anak Kandung</option>
+      <option value="Anak Tiri">Anak Tiri</option>
+      <option value="Anak Angkat">Anak Angkat</option>
+    </select>
+    <input id="sekolah_asal" name="sekolah_asal" placeholder="Nama Sekolah Asal" required type="text"/>
+    <textarea id="alamat_sekolah" name="alamat_sekolah_asal" placeholder="Alamat Sekolah Asal" required></textarea>
+    <input id="tahun_lulus" name="tahun_lulus" min="2020" max="2025" placeholder="Tahun Lulus" required type="number"/>
+    <button class="btn" type="button" onclick="validasiSiswa()">Lanjut ke Data Periodik</button>
+  </div>
 
-<div class="card" id="form-siswa" style="display:none;">
-  <h2>Data Siswa</h2>
-  <input id="nik" maxlength="16" name="nik_siswa" pattern="\d{16}" placeholder="NIK (16 digit)" required title="NIK harus 16 digit angka" type="text"/>
-  <input id="kk" maxlength="16" name="no_kk" pattern="\d{16}" placeholder="Nomor KK (16 digit)" required title="Nomor KK harus 16 digit angka" type="text"/>
-  <input id="nama" name="nama_siswa" placeholder="Nama Lengkap" required type="text"/>
-  <input id="nisn" maxlength="10" name="nisn" pattern="\d{10}" placeholder="NISN (10 digit)" required title="NISN harus 10 digit angka" type="text"/>
-  <select id="jk" name="jenis_kelamin" required>
-    <option value="">Jenis Kelamin</option>
-    <option value="Laki-laki">Laki-laki</option>
-    <option value="Perempuan">Perempuan</option>
-  </select>
-  <input id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir" required type="text"/>
-  <input id="tanggal_lahir" name="tanggal_lahir" required type="date"/>
-  <select id="agama" name="agama" required>
-    <option value="">Agama</option>
-    <option value="Islam">Islam</option>
-    <option value="Kristen">Kristen</option>
-    <option value="Katolik">Katolik</option>
-    <option value="Hindu">Hindu</option>
-    <option value="Budha">Budha</option>
-    <option value="Konghucu">Konghucu</option>
-    <option value="Lainnya">Lainnya</option>
-  </select>
-  <textarea id="alamat" name="alamat_lengkap" placeholder="Alamat Lengkap" required></textarea>
-  <input id="anak_ke" min="1" name="anak_ke" placeholder="Anak ke-" required type="number"/>
-  <input id="jumlah_saudara" min="0" name="jumlah_saudara" placeholder="Jumlah Saudara Kandung" required type="number"/>
-  <select id="status_keluarga" name="status_keluarga" required>
-    <option value="">Status Dalam Keluarga</option>
-    <option value="Anak Kandung">Anak Kandung</option>
-    <option value="Anak Tiri">Anak Tiri</option>
-    <option value="Anak Angkat">Anak Angkat</option>
-  </select>
-  <input id="sekolah_asal" name="sekolah_asal" placeholder="Nama Sekolah Asal" required type="text"/>
-  <textarea id="alamat_sekolah" name="alamat_sekolah_asal" placeholder="Alamat Sekolah Asal" required></textarea>
-  <input id="tahun_lulus" max="2025" min="2020" name="tahun_lulus" placeholder="Tahun Lulus" required type="number"/>
-  <button class="btn" onclick="validasiSiswa()">Lanjut ke Data Periodik</button>
-</div>
+  <div class="card" id="form-periodik" style="display:none;">
+    <h2>Data Periodik</h2>
+    <input id="tinggi" name="tinggi" placeholder="Tinggi Badan (cm)" required type="number"/>
+    <input id="berat" name="berat" placeholder="Berat Badan (kg)" required type="number"/>
+    <input id="jarak" name="jarak" placeholder="Jarak ke Sekolah (km)" required step="0.1" type="number"/>
+    <input id="waktu" name="waktu" placeholder="Waktu Tempuh (menit)" required type="number"/>
+    <select id="jurusan" name="pilihan_jurusan" required>
+      <option value="">Pilih Jurusan</option>
+      <option value="Tata Busana">Tata Busana</option>
+      <option value="Teknik Instalasi Tenaga Listrik">Teknik Instalasi Tenaga Listrik</option>
+    </select>
+    <button class="btn" type="button" onclick="kembaliKeSiswa()">Kembali</button>
+    <button class="btn" type="button" onclick="validasiPeriodik()">Lanjut ke Data Orang Tua</button>
+  </div>
 
-<div class="card" id="form-periodik" style="display:none;">
-  <h2>Data Periodik</h2>
-  <input id="tinggi" name="tinggi" placeholder="Tinggi Badan (cm)" required type="number"/>
-  <input id="berat" name="berat" placeholder="Berat Badan (kg)" required type="number"/>
-  <input id="jarak" name="jarak" placeholder="Jarak ke Sekolah (km)" required step="0.1" type="number"/>
-  <input id="waktu" name="waktu" placeholder="Waktu Tempuh (menit)" required type="number"/>
-  <select id="jurusan" name="pilihan_jurusan" required>
-    <option value="">Pilih Jurusan</option>
-    <option value="Tata Busana">Tata Busana</option>
-    <option value="Teknik Instalasi Tenaga Listrik">Teknik Instalasi Tenaga Listrik</option>
-  </select>
-  <button class="btn" onclick="kembaliKeSiswa()">Kembali</button>
-  <button class="btn" onclick="validasiPeriodik()">Lanjut ke Data Orang Tua</button>
-</div>
+  <div class="card" id="form-ortu" style="display:none;">
+    <h2>Data Orang Tua</h2>
+    <h4>Ayah Kandung</h4>
+    <input id="ayah_nama" name="nama_ayah" placeholder="Nama Ayah" required type="text"/>
+    <input id="ayah_nik" name="nik_ayah" maxlength="16" pattern="\d{16}" placeholder="NIK Ayah (16 digit)" required title="NIK Ayah harus 16 digit angka" type="text"/>
+    <input id="ayah_lahir" name="tahun_lahir_ayah" placeholder="Tahun Lahir Ayah" required type="number"/>
+    <input id="ayah_pendidikan" name="pendidikan_ayah" placeholder="Pendidikan Ayah" required type="text"/>
+    <input id="ayah_pekerjaan" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah" required type="text"/>
+    <input id="ayah_penghasilan" name="penghasilan_ayah" placeholder="Penghasilan Ayah" required type="text"/>
+    <h4>Ibu Kandung</h4>
+    <input id="ibu_nama" name="nama_ibu" placeholder="Nama Ibu" required type="text"/>
+    <input id="ibu_nik" name="nik_ibu" maxlength="16" pattern="\d{16}" placeholder="NIK Ibu (16 digit)" required title="NIK Ibu harus 16 digit angka" type="text"/>
+    <input id="ibu_lahir" name="tahun_lahir_ibu" placeholder="Tahun Lahir Ibu" required type="number"/>
+    <input id="ibu_pendidikan" name="pendidikan_ibu" placeholder="Pendidikan Ibu" required type="text"/>
+    <input id="ibu_pekerjaan" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu" required type="text"/>
+    <input id="ibu_penghasilan" name="penghasilan_ibu" placeholder="Penghasilan Ibu" required type="text"/>
+    <button class="btn" type="button" onclick="kembaliKePeriodik()">Kembali</button>
+    <button class="btn" type="button" onclick="validasiOrtu()">Lanjut ke Kontak</button>
+  </div>
 
-<div class="card" id="form-ortu" style="display:none;">
-  <h2>Data Orang Tua</h2>
-  <h4>Ayah Kandung</h4>
-  <input id="ayah_nama" name="nama_ayah" placeholder="Nama Ayah" required type="text"/>
-  <input id="ayah_nik" maxlength="16" name="nik_ayah" pattern="\d{16}" placeholder="NIK Ayah (16 digit)" required title="NIK Ayah harus 16 digit angka" type="text"/>
-  <input id="ayah_lahir" name="tahun_lahir_ayah" placeholder="Tahun Lahir Ayah" required type="number"/>
-  <input id="ayah_pendidikan" name="pendidikan_ayah" placeholder="Pendidikan Ayah" required type="text"/>
-  <input id="ayah_pekerjaan" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah" required type="text"/>
-  <input id="ayah_penghasilan" name="penghasilan_ayah" placeholder="Penghasilan Ayah" required type="text"/>
-  <h4>Ibu Kandung</h4>
-  <input id="ibu_nama" name="nama_ibu" placeholder="Nama Ibu" required type="text"/>
-  <input id="ibu_nik" maxlength="16" name="nik_ibu" pattern="\d{16}" placeholder="NIK Ibu (16 digit)" required title="NIK Ibu harus 16 digit angka" type="text"/>
-  <input id="ibu_lahir" name="tahun_lahir_ibu" placeholder="Tahun Lahir Ibu" required type="number"/>
-  <input id="ibu_pendidikan" name="pendidikan_ibu" placeholder="Pendidikan Ibu" required type="text"/>
-  <input id="ibu_pekerjaan" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu" required type="text"/>
-  <input id="ibu_penghasilan" name="penghasilan_ibu" placeholder="Penghasilan Ibu" required type="text"/>
-  <button class="btn" onclick="kembaliKePeriodik()">Kembali</button>
-  <button class="btn" onclick="validasiOrtu()">Lanjut ke Kontak</button>
-</div>
-
-<div class="card" id="form-kontak" style="display:none;">
-  <h2>Kontak</h2>
-  <input id="hp_siswa" maxlength="15" name="hp_siswa" pattern="\d{10,15}" placeholder="Nomor HP/WA Peserta Didik" required title="Masukkan nomor HP/WA yang valid" type="text"/>
-  <input id="hp_ortu" maxlength="15" name="hp_orangtua" pattern="\d{10,15}" placeholder="Nomor HP/WA Orang Tua" required title="Masukkan nomor HP/WA yang valid" type="text"/>
-  <button class="btn" onclick="kembaliKeOrtu()">Kembali</button>
-  <button class="btn" type="submit" id="btnKirim">Kirim Data</button>
-</div>
-
+  <div class="card" id="form-kontak" style="display:none;">
+    <h2>Kontak</h2>
+    <input id="hp_siswa" name="hp_siswa" maxlength="15" pattern="\d{10,15}" placeholder="Nomor HP/WA Peserta Didik" required title="Masukkan nomor HP/WA yang valid" type="text"/>
+    <input id="hp_ortu" name="hp_orangtua" maxlength="15" pattern="\d{10,15}" placeholder="Nomor HP/WA Orang Tua" required title="Masukkan nomor HP/WA yang valid" type="text"/>
+    <button class="btn" type="button" onclick="kembaliKeOrtu()">Kembali</button>
+    <button class="btn" type="submit" id="kirimBtn">Kirim Data</button>
+  </div>
 </form>
 
 <div class="card" id="notifikasi" style="display:none; text-align:center;">
@@ -179,81 +179,75 @@
 <script>
   function lanjutForm() {
     document.getElementById('syarat').style.display = 'none';
-    document.getElementById('form-siswa').style.display = 'block';
+    document.getElementById('ppdbForm').style.display = 'block';
   }
+
   function validasiSiswa() {
-    // (kode validasi siswa-mu tetap seperti sebelumnya)
+    const nik = document.getElementById('nik');
+    if (!nik.checkValidity()) {
+      alert(nik.title);
+      nik.focus();
+      return;
+    }
     document.getElementById('form-siswa').style.display = 'none';
     document.getElementById('form-periodik').style.display = 'block';
   }
-  function kembaliKeSiswa() {
-    document.getElementById('form-periodik').style.display = 'none';
-    document.getElementById('form-siswa').style.display = 'block';
-  }
+
   function validasiPeriodik() {
     document.getElementById('form-periodik').style.display = 'none';
     document.getElementById('form-ortu').style.display = 'block';
   }
-  function kembaliKePeriodik() {
-    document.getElementById('form-ortu').style.display = 'none';
-    document.getElementById('form-periodik').style.display = 'block';
-  }
+
   function validasiOrtu() {
     document.getElementById('form-ortu').style.display = 'none';
     document.getElementById('form-kontak').style.display = 'block';
   }
+
+  function kembaliKeSiswa() {
+    document.getElementById('form-periodik').style.display = 'none';
+    document.getElementById('form-siswa').style.display = 'block';
+  }
+
+  function kembaliKePeriodik() {
+    document.getElementById('form-ortu').style.display = 'none';
+    document.getElementById('form-periodik').style.display = 'block';
+  }
+
   function kembaliKeOrtu() {
     document.getElementById('form-kontak').style.display = 'none';
     document.getElementById('form-ortu').style.display = 'block';
   }
-</script>
 
-<script>
-document.getElementById("ppdbForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-  const form = event.target;
-  const btn = document.getElementById("btnKirim");
+  document.getElementById("ppdbForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const btn = document.getElementById("kirimBtn");
+    btn.disabled = true;
+    btn.innerText = "Mengirim silakan tunggu OK...";
 
-  btn.disabled = true;
-  btn.textContent = "Mengirim silakan tunggu jangan tutup...";
+    const form = event.target;
+    const formData = new FormData(form);
+    const encoded = new URLSearchParams(formData);
 
-  const formData = new FormData(form);
-  const encoded = new URLSearchParams();
-  for (const [key, value] of formData.entries()) {
-    encoded.append(key, value);
-  }
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: encoded
-    });
-
-    const result = await response.json();
-
-    if (result.result === "success") {
-      form.style.display = "none";
-      const notifikasi = document.getElementById("notifikasi");
-      notifikasi.innerHTML = `
-        <h2>✅ Pendaftaran Berhasil</h2>
-        <p>Terima kasih telah mendaftar. Bukti pendaftaran Anda siap diunduh:</p>
-        <p><a href="${result.pdfUrl}" target="_blank" style="font-weight: bold; color: #d71149;" download>🖨️ Download Bukti Pendaftaran (PDF)</a></p>
-        <p><em>Harap cetak bukti ini dan bawa ke panitia SPMB.</em></p>
-        <button class="btn" onclick="window.location.reload()">Isi Formulir Baru</button>
-      `;
-      notifikasi.style.display = "block";
-      window.open(result.pdfUrl, '_blank');
-    } else {
-      alert("Gagal menyimpan data: " + result.message);
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: encoded
+      });
+      const result = await response.json();
+      if (result.result === "success") {
+        form.style.display = "none";
+        document.getElementById("notifikasi").style.display = "block";
+        window.open(result.pdfUrl, "_blank");
+      } else {
+        alert("Gagal menyimpan data: " + result.message);
+      }
+    } catch (err) {
+      alert("Terjadi kesalahan: " + err.message);
+    } finally {
       btn.disabled = false;
-      btn.textContent = "Kirim Data";
+      btn.innerText = "Kirim Data";
     }
-  } catch (err) {
-    alert("Terjadi kesalahan: " + err.message);
-    btn.disabled = false;
-    btn.textContent = "Kirim Data";
-  }
-});
+  });
 </script>
 
 </body>
