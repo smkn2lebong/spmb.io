@@ -34,6 +34,8 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      text-decoration: none;
+      text-align: center;
     }
     .btn:disabled {
       background-color: #aaa;
@@ -173,6 +175,7 @@
 <div class="card" id="notifikasi" style="display:none; text-align:center;">
   <h2>Data Anda sudah terkirim!</h2>
   <p>Terima kasih telah mendaftar. Silakan download bukti pendaftaran Anda.</p>
+  <a id="pdfLink" class="btn" target="_blank" style="display:none;">Download Bukti Pendaftaran</a>
   <button class="btn" onclick="window.location.reload()">Isi Formulir Baru</button>
 </div>
 
@@ -237,6 +240,8 @@
       if (result.result === "success") {
         form.style.display = "none";
         document.getElementById("notifikasi").style.display = "block";
+        document.getElementById("pdfLink").href = result.pdfUrl;
+        document.getElementById("pdfLink").style.display = "inline-block";
         window.open(result.pdfUrl, "_blank");
       } else {
         alert("Gagal menyimpan data: " + result.message);
