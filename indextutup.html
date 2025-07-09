@@ -2,50 +2,83 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pendaftaran Ditutup</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
       height: 100vh;
+      background: linear-gradient(to bottom, #2c3e50, #34495e);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ecf0f1;
     }
-    .card {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      border: none;
-      border-radius: 1rem;
-      max-width: 500px;
-    }
-    .card-header {
-      background-color: #dc3545;
-      color: white;
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
+
+    .message-box {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 10px;
       text-align: center;
+      z-index: 1;
+      position: relative;
     }
-    .card-body {
-      text-align: center;
+
+    .message-box h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
     }
-    .emoji {
-      font-size: 3rem;
+
+    .message-box p {
+      font-size: 18px;
+    }
+
+    .rain {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    .drop {
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="card-header">
-      <h3><span class="emoji">⚠️</span> Mohon Maaf</h3>
-    </div>
-    <div class="card-body">
-      <p class="fs-5">Pendaftaran online sudah <strong>berakhir</strong>.</p>
-      <p>Silakan hubungi panitia jika membutuhkan informasi lebih lanjut.</p>
-      <a href="https://smkn2lebong.sch.id/kontak.html" class="btn btn-outline-danger mt-3">
-  <i class="bi bi-house-door-fill"></i> Kembali ke Beranda
-</a>
+  <div class="rain">
+    <!-- Generate 100 tetesan hujan -->
+    <script>
+      for (let i = 0; i < 100; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'drop';
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDuration = (0.5 + Math.random()) + 's';
+        drop.style.animationDelay = Math.random() + 's';
+        document.querySelector('.rain').appendChild(drop);
+      }
+    </script>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="message-box">
+    <h1>Pendaftaran sudah berakhir 😢</h1>
+    <p>Mohon maaf, tidak ada pendaftaran aktif saat ini.<br>Silakan kembali lagi di kesempatan berikutnya.</p>
+  </div>
 </body>
 </html>
